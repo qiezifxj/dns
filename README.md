@@ -11,13 +11,13 @@ DNS
 主要文件(都位于application下)
 ----------------------------------
 * 核心文件(Core)
-	* /core/DNS_Controller.php 重载控制器基类
-	* /core/DNS_Model.php 重载模型基类
+	* [/core/DNS_Controller.php](https://github.com/qiezifxj/dns/blob/master/application/core/DNS_Controller.php) 重载控制器基类
+	* [/core/DNS_Model.php](https://github.com/qiezifxj/dns/blob/master/application/core/DNS_Model.php) 重载模型基类
 * 控制器(Controller)
-	* /controller/login.php 登录注册相关
-	* /controller/account.php 关联DNSPOD账户
-	* /controller/domain.php 域名相关操作
-	* /controller/record.php 记录相关操作
+	* [/controller/login.php](https://github.com/qiezifxj/dns/blob/master/application/controllers/login.php) 登录注册相关
+	* [/controller/account.php](https://github.com/qiezifxj/dns/blob/master/application/controllers/account.php) 关联DNSPOD账户
+	* [/controller/domain.php](https://github.com/qiezifxj/dns/blob/master/application/controllers/domain.php) 域名相关操作
+	* [/controller/record.php](https://github.com/qiezifxj/dns/blob/master/application/controllers/record.php) 记录相关操作
 * 模型(Model)
 * 模板(View)
 * 类库(Library)
