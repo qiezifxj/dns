@@ -33,6 +33,7 @@ if (defined('ENVIRONMENT'))
 	switch (ENVIRONMENT)
 	{
 		case 'development':
+                        ini_set('display_errors', 'On');
 			error_reporting(E_ALL);
 		break;
 	
@@ -46,6 +47,8 @@ if (defined('ENVIRONMENT'))
 	}
 }
 
+define('WEB_ROOT', dirname(dirname(__FILE__)));
+
 /*
  *---------------------------------------------------------------
  * SYSTEM FOLDER NAME
@@ -56,7 +59,7 @@ if (defined('ENVIRONMENT'))
  * as this file.
  *
  */
-	$system_path = 'system';
+	$system_path = WEB_ROOT.'/system';
 
 /*
  *---------------------------------------------------------------
@@ -72,7 +75,7 @@ if (defined('ENVIRONMENT'))
  * NO TRAILING SLASH!
  *
  */
-	$application_folder = 'application';
+	$application_folder = WEB_ROOT.'/application';
 
 /*
  * --------------------------------------------------------------------
