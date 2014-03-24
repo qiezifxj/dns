@@ -1,5 +1,9 @@
-
+DROP TABLE IF EXISTS `dns_record`;
+DROP TABLE IF EXISTS `dns_domain`;
+DROP TABLE IF EXISTS `dns_account`;
 DROP TABLE IF EXISTS `dns_user`;
+
+
 CREATE TABLE `dns_user`(
 `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
 `username` CHAR(50) UNIQUE NOT NULL DEFAULT '',
@@ -11,19 +15,20 @@ KEY `name_pass`(`username`(10),`password`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '用户表';
 
 
-DROP TABLE IF EXISTS `dns_account`;
+
 CREATE TABLE `dns_account`(
 `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
 `uid` INT UNSIGNED NOT NULL DEFAULT 0,
 `dnspod_username` CHAR(100) NOT NULL DEFAULT '',
-`dnspod_password` CHAR(50) NOT NULL DEFAULT '' COMMENT 'Encrypt过的密码',
+`dnspod_password` CHAR(100) NOT NULL DEFAULT '' COMMENT 'Encrypt过的密码',
 `nickname` VARCHAR(32) NOT NULL DEFAULT '',
 `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY(`id`),
-FOREIGN KEY(`uid`) REFERENCES `dns_user`(`id`)
+FOREIGN KEY(`uid`) REFERENCES `dns_user`(`id`),
+UNIQUE KEY uid_email(`uid`,`dnspod_username`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT 'DNSPOD账户表';
 
-DROP TABLE IF EXISTS `dns_domain`;
+
 CREATE TABLE `dns_domain`(
 `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
 `aid` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Account ID',
@@ -35,12 +40,12 @@ PRIMARY KEY(`id`),
 FOREIGN KEY(`aid`) REFERENCES `dns_account`(`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '域名表';
 
-DROP TABLE IF EXISTS `dns_record`;
+
 CREATE TABLE `dns_record`(
 `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
 `did` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Domain ID',
 `record_id` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '此记录在DNSPOD中的ID',
-`name` CHAR(80) NOT NULL DEFAULT '',
+`name` CHAR(80) NOT NULL DEFAULT '' COMMENT '记录的名称',
 `type` CHAR(10) NOT NULL DEFAULT '',
 `line` VARCHAR(10) NOT NULL DEFAULT '' COMMENT '线路',
 `value` CHAR(100) NOT NULL DEFAULT '' COMMENT '记录的值',

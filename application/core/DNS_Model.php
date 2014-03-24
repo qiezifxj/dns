@@ -31,4 +31,23 @@ class DNS_Model extends CI_Model{
         
         return $default;
     }
+    
+    /**
+     * 更改数组key(如在account列表中修改改为account_id作为key)
+     * @param array $array
+     * @param type $key
+     * @param type $filter
+     * @return array
+     */
+    public static function _ary_change_key(array $array, $key, $filter = '')
+    {
+        $ret = array();
+        
+        foreach ($array as $v) {
+            $kval = self::_g($v, $key, '', $filter);
+            $ret[$kval] = $v;
+        }
+        
+        return $ret;
+    }
 }

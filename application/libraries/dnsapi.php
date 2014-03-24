@@ -8,21 +8,42 @@ class Dnsapi
     private $CI     = NULL;
     private $error  = '';
     
-    private $api_domain =   'https://dnsapi.cn/';
+    private $api_domain     =   'https://dnsapi.cn/';
+    private $api_useragent  =   NULL;
+    private $api_lang       =   NULL;
     
-    public function __construct($login_email = '', $login_password = '')
+    public function __construct(array $param)
     {
-        $this->login_email = $login_email;
-        $this->login_password = $login_password;
+        $this->login_email = $param['login_email'];
+        $this->login_password = $param['login_password'];
         
+        $this->CI = & get_instance();
         $this->CI->load->helper('curl');
+        $this->CI->load->config('dnsapi');
+        
+        $api_config = $this->CI->config->item('dnsapi');
+        $this->api_useragent = $api_config['useragent'];
+        $this->api_lang = $api_config['lang'];
     }
     
+    /**
+     * 调用API获取数据
+     * @param string $api   所调用的API
+     * @param array $data   需要发送的数据
+     * @return mixed        成功则返回获取到的数据;失败则返回false,并抛出异常
+     * @throws Exception    API调用失败则抛出异常
+     */
     public function get($api, array $data = array())
     {
         $post_data  = $this->make_post_data($data);
         $res_json   = curl_post($this->api_domain.$api, $post_data);
-        $res        = json_decode($res_json, true);
+        
+        if ( ! $res_json) {
+            throw new Exception('获取数据失败！');
+            return false;
+        }
+        
+        $res = json_decode($res_json, true);
         
         if ( ! $this->check($res)) {
             throw new Exception($this->error);
@@ -56,7 +77,7 @@ class Dnsapi
      */
     private function make_post_data(array $data = array())
     {
-        $data_str = 'login_email='.$this->login_email.'&login_password='.$this->login_password.'&format=json&lang=cn';
+        $data_str = 'login_email='.$this->login_email.'&login_password='.$this->login_password.'&format=json&lang='.$this->api_lang;
         
         foreach ($data as $dkey => $dval) {
             $data_str .= '&'.$dkey.'='.$dval;

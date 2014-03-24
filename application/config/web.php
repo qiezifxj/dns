@@ -8,3 +8,6 @@ $config['web_keywords'] = 'DNSPOD,域名';
 
 //网站描述
 $config['web_description'] = '通过DNSPOD的API接口实现域名和记录的管理！';
+
+//网站根域
+$config['web_baseurl'] = 'http://d.test.cn/';

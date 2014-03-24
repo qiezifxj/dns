@@ -12,3 +12,17 @@ function ajax_submit_form(form_url, form_obj, form_jumpto){
         }
     });
 }
+
+function ajax_delete(del_url, del_id, del_jumpto){
+    if ( ! confirm('确定删除吗?')) return;
+    jQuery.ajax({
+        url : del_url,
+        type : 'post',
+        dataType : 'json',
+        data : 'id=' + del_id,
+        success : function(d){
+            d.success && (location.href = del_jumpto);
+            d.error && alert('删除失败:' + d.error);
+        }
+    });
+}

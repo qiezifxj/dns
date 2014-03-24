@@ -26,7 +26,7 @@
 <br /><br />
 <div>
     <h3>添加DNSPOD账户</h3>
-    <from role="form" action="" method="post" onsubmit="return false;">
+    <form role="form" action="" method="post" onsubmit="return false;">
         <div class="form-group">
             <label for="username">账户名</label>
             <input type="email" name="username" class="form-control" id="username" placeholder="输入DNSPOD登录邮箱" />
@@ -36,5 +36,5 @@
             <input type="password" name="password" class="form-control" id="password" placeholder="DNSPOD登录密码" />
         </div>
         <input type="button" value="提交" class="btn btn-default" onclick="ajax_submit_form('/account/add', this.form, '/');" />
-    </from>
+    </form>
 </div>

@@ -42,7 +42,8 @@ $route['default_controller'] = "account";
 $route['404_override'] = '';
 $route['register'] = 'login/register';
 $route['reg'] = 'login/reg';
-
+$route['setaccount/(:num)'] = 'account/set_account/$1';
+$route['record/(:num)'] = 'record/index/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
