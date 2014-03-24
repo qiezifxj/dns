@@ -13,13 +13,18 @@ function ajax_submit_form(form_url, form_obj, form_jumpto){
     });
 }
 
-function ajax_delete(del_url, del_id, del_jumpto){
-    if ( ! confirm('确定删除吗?')) return;
+function ajax_delete(del_url, del_id, del_jumpto, extra_data){
+    if ( ! confirm('确定执行该操作吗?')) return;
+    
+    if (typeof extra_data === 'undefined') {
+        extra_data = '';
+    }
+    
     jQuery.ajax({
         url : del_url,
         type : 'post',
         dataType : 'json',
-        data : 'id=' + del_id,
+        data : 'id=' + del_id + '&' + extra_data,
         success : function(d){
             d.success && (location.href = del_jumpto);
             d.error && alert('删除失败:' + d.error);

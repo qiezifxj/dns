@@ -49,7 +49,7 @@ class Dnsapi
             throw new Exception($this->error);
             return false;
         }
-        
+//        print_r($res);exit;
         return $res;
     }
     
