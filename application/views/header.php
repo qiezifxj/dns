@@ -17,7 +17,7 @@
                         <li><a href="/" style="font-size:50px; font-family:'楷体'">DNSPOD域名管理</a></li>
                     </ul>
                     <ul class='nav navbar-nav navbar-right'>
-                        <li style="padding-top:15px;"><font color="white"><strong>当前账户:</strong></font>
+                        <li style="padding-top:15px;"><font color="white"><strong>欢迎您:<i><?php echo $nickname;?></i> &nbsp; 当前账户:</strong></font>;
                             <select onchange="location.href='/setaccount/'+this.value;">
                             <?php if (!is_array($account_list) OR empty($account_list)):?>
                                 <option value="0"><i>没有DNSPOD账户</i></option>

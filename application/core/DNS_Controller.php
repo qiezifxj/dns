@@ -42,6 +42,7 @@ class DNS_Controller extends CI_Controller{
             'keywords' => $this->config->item('web_keywords'),
             'description' => $this->config->item('web_description'),
             'base_url' => $this->config->item('web_baseurl'),
+            'nickname' => $this->user->nickname,
             'active_menu' => $active_menu,
             'account_list' => $this->account_list,
             'account_id' => $this->account_id

@@ -31,7 +31,7 @@
                 </td>
             </tr>
         <?php endforeach;else:?>
-            <tr><th colspan="7"><strong><?php echo $error;?></strong></th></tr>
+            <tr><th colspan="7" style="text-align:center;"><strong><?php echo $error;?></strong></th></tr>
         <?php endif;?>
         </tbody>
     </table>
