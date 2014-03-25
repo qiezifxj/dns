@@ -41,11 +41,11 @@ DNS
 
 数据库
 ----------------------------------
-	[/database.sql](https://github.com/qiezifxj/dns/blob/master/database.sql)
+* [/database.sql](https://github.com/qiezifxj/dns/blob/master/database.sql)
 
 # 预览地址
-	[dns.f-xj.org](http://dns.f-xj.org/)
+* [dns.f-xj.org](http://dns.f-xj.org/)
 
 # To Be Continued
-	* DNSPOD账户的编辑删除等操作暂时未作
-	* Domains和Records 本应在本地数据库保存，限于时间，暂时未作，因此每次都请求API，响应时间较慢
+* DNSPOD账户的编辑删除等操作暂时未作
+* Domains和Records 本应在本地数据库保存，限于时间，暂时未作，因此每次都请求API，响应时间较慢
