@@ -44,8 +44,11 @@ $route['register'] = 'login/register';
 $route['reg'] = 'login/reg';
 $route['setaccount/(:num)'] = 'account/set_account/$1';
 $route['record/(:num)'] = 'record/index/$1';
+
 $route['export/domain.xml'] = 'export/domain';
 $route['export/record/(:num).xml'] = 'export/record/$1';
+
+$route['import/(:any)'] = 'export/import/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

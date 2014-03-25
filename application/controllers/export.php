@@ -51,6 +51,9 @@ class Export extends DNS_Controller
         array2xml($xml_data, 'domains', 'domain', true);
     }
     
+    /**
+     * 导出记录
+     */
     public function record($domain_id = 0)
     {
         $records = NULL;
@@ -71,6 +74,61 @@ class Export extends DNS_Controller
         }
         
         $this->load->helper('xml');
-        array2xml($xml_data, 'domains', 'domain', true);
+        array2xml($xml_data, 'records', 'record', true);
+    }
+    
+    /**
+     * 导入
+     * @param string $type  'domain' OR 'record'
+     * @param type $id      导入记录时的domain_id
+     */
+    public function import($type = 'domain', $id = NULL)
+    {
+        if ('domain' != $type AND 'record' != $type) {
+            return header('Location:/domain');
+        }
+        
+        $upload = $_FILES['upload_xml'];
+        if (empty($upload) OR 0 != $upload['error']) {
+            return header('Location:/domain');
+        }
+        
+        /**
+         * 域名和记录添加所需字段 => 在XML中的名称
+         */
+        $fields = array(
+            'domain' => array(
+                'domain' => 'name',
+                'is_mark'=> 'is_mark'
+            ),
+            'record' => array(
+                'sub_domain' => 'name',
+                'record_type' => 'type',
+                'record_line' => 'line',
+                'value' => 'value',
+                'mx' => 'mx',
+                'ttl' => 'ttl'
+            )
+        );
+        
+        $xmldom = simplexml_load_file($upload['tmp_name']);
+        
+        foreach ($xmldom->$type as $v) {
+            $api_data = array();
+            if ('record' == $type) {
+                $api_data['domain_id'] = $id;
+            }
+            
+            foreach ($fields[$type] as $f => $name) {
+                $api_data[$f] = $v->$name;
+            }
+
+            try {
+                $this->dnsapi->get(ucfirst($type).'.Create', $api_data);
+            }
+            catch(Exception $e){}
+        }
+        
+        return header('Location:/'.$type.'/'.$id);
     }
 }

@@ -59,7 +59,7 @@ class Account extends DNS_Controller
     {
         $this->session->set_userdata('account_id', (int)$account_id);
         
-        $this->output->set_header('Location:/');
+        $this->output->set_header('Location:/domain');
     }
 }
 

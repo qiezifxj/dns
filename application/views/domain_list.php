@@ -49,3 +49,14 @@
     </form>
 </div>
 
+
+<div>
+    <h3>导入域名</h3>
+    <form role="form" action="/import/domain" method="post" enctype="multipart/form-data" onsubmit="$(this).find('input[type=submit]').attr('disabled',true);">
+        <div class="form-group">
+            <label for="domain_xml">域名XML文件</label>
+            <input type="file" name="upload_xml" id="domain_xml" />
+        </div>
+        <input type="submit" class="btn btn-default" />
+    </form>
+</div>
