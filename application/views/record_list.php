@@ -1,5 +1,5 @@
 <h3 class="col-md-8" style="padding-left: 0;"><a href="/domain/">我的域名</a> &gt; <?php echo $domain;?></h3>
-<div class="col-md-4" style="text-align:right;"><button class="btn btn-default">导出记录</button></div>
+<div class="col-md-4" style="text-align:right;"><a href="/export/record/<?php echo $domain_id;?>.xml" class="btn btn-default">导出记录</a></div>
 <div>
     <table class="table table-striped table-hover table-condensed">
         <thead>
