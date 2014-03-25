@@ -20,6 +20,7 @@ DNS
 	* [/controller/account.php](https://github.com/qiezifxj/dns/blob/master/application/controllers/account.php) 关联DNSPOD账户
 	* [/controller/domain.php](https://github.com/qiezifxj/dns/blob/master/application/controllers/domain.php) 域名相关操作
 	* [/controller/record.php](https://github.com/qiezifxj/dns/blob/master/application/controllers/record.php) 记录相关操作
+	* [/controller/export.php](https://github.com/qiezifxj/dns/blob/master/application/controllers/export.php) 域名和记录的导入导出操作
 * 模型(Model)
 	* [/models/user.php](https://github.com/qiezifxj/dns/blob/master/application/models/user.php) 用户登录注册等，与数据库交互
 	* [/models/daccount.php](https://github.com/qiezifxj/dns/blob/master/application/models/daccount.php) 管理DNSPOD账户，负责与数据库交互
@@ -35,6 +36,7 @@ DNS
 * 函数库(Helper)
 	* [/helpers/ajax_helper.php](https://github.com/qiezifxj/dns/blob/master/application/helpers/ajax_helper.php) 负责处理ajax请求的成功和失败
 	* [/helpers/curl_helper.php](https://github.com/qiezifxj/dns/blob/master/application/helpers/curl_helper.php) 目前主要是curl_post函数，接口类需要用
+	* [/helpers/xml_helper.php](https://github.com/qiezifxj/dns/blob/master/application/helpers/xml_helper.php) 数组与XML转化等操作
 * 配置文件(Config)
 	* [/config/web.php](https://github.com/qiezifxj/dns/blob/master/application/config/web.php) 网站基本配置
 	* [/config/dnsapi.php](https://github.com/qiezifxj/dns/blob/master/application/config/dnsapi.php) 接口调用时的一些配置
