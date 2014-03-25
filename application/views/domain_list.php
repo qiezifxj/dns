@@ -1,5 +1,6 @@
+<h3 class="col-md-8" style="padding-left:0;">我的域名</h3>
+<div class="col-md-4" style="text-align:right;"><button class="btn btn-default">导出域名</button></div>
 <div>
-    <h3>我的域名</h3>
     <table class="table">
         <thead>
             <tr>
