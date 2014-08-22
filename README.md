@@ -11,7 +11,7 @@ DNS
 主要文件(都位于application下)
 ----------------------------------
 * 类库(Library)
-	* [/libraries/dnsapi.php](https://github.com/qiezifxj/dns/blob/master/application/libraries/dnsapi.php) 接口类，负责调用DNSPOD API
+	* [/libraries/dnsapi.php](./application/libraries/dnsapi.php) 接口类，负责调用DNSPOD API
 * 核心文件(Core)
 	* [/core/DNS_Controller.php](https://github.com/qiezifxj/dns/blob/master/application/core/DNS_Controller.php) 重载控制器基类
 	* [/core/DNS_Model.php](https://github.com/qiezifxj/dns/blob/master/application/core/DNS_Model.php) 重载模型基类
